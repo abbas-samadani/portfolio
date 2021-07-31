@@ -1,6 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { get } from '../../services/HttpClient';
 
 export default function About() {
+    const [about, setAbout] = useState([])
+
+    useEffect(() => {
+        get('getabout').then(res => setAbout(res[0]));
+      }, [])
+    
     return (
         <div>
             <section id="about" className="about">
@@ -14,26 +21,23 @@ export default function About() {
                             <img src="styles/assets/img/profile-img.jpg" className="img-fluid" alt="" />
                         </div>
                         <div className="col-lg-8 pt-4 pt-lg-0 content aos-init aos-animate" data-aos="fade-left">
-                            <h3>UI/UX Designer &amp; Web Developer.</h3>
-                            <p className="font-italic">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                                magna aliqua.
-              </p>
+                            <h3>{about.title}</h3>
+                            <p className="font-italic">{about.description}</p>
                             <div className="row">
                                 <div className="col-lg-6">
                                     <ul>
-                                        <li><i className="icofont-rounded-right" /> <strong>Birthday:</strong> 1 May 1997</li>
-                                        <li><i className="icofont-rounded-right" /> <strong>Website:</strong> www.example.com</li>
-                                        <li><i className="icofont-rounded-right" /> <strong>Phone:</strong> +123 456 7890</li>
-                                        <li><i className="icofont-rounded-right" /> <strong>City:</strong> City : Kolkata, WB</li>
+                                        <li><i className="icofont-rounded-right" /> <strong>Birthday: </strong>{about.birthday}</li>
+                                        <li><i className="icofont-rounded-right" /> <strong>Website: </strong>{about.email}</li>
+                                        <li><i className="icofont-rounded-right" /> <strong>Phone: </strong>{about.phone}</li>
+                                        <li><i className="icofont-rounded-right" /> <strong>City: </strong>{about.city}</li>
                                     </ul>
                                 </div>
                                 <div className="col-lg-6">
                                     <ul>
-                                        <li><i className="icofont-rounded-right" /> <strong>Age:</strong> 24</li>
-                                        <li><i className="icofont-rounded-right" /> <strong>Degree:</strong> Master</li>
-                                        <li><i className="icofont-rounded-right" /> <strong>PhEmailone:</strong> email@example.com</li>
-                                        <li><i className="icofont-rounded-right" /> <strong>Freelance:</strong> Available</li>
+                                        <li><i className="icofont-rounded-right" /> <strong>Age: </strong>{about.age}</li>
+                                        <li><i className="icofont-rounded-right" /> <strong>Degree: </strong>{about.degree}</li>
+                                        <li><i className="icofont-rounded-right" /> <strong>Email: </strong>{about.email}</li>
+                                        <li><i className="icofont-rounded-right" /> <strong>Freelance: </strong> Available</li>
                                     </ul>
                                 </div>
                             </div>

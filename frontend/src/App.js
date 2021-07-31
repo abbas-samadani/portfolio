@@ -13,14 +13,21 @@ import Header from './component/header/Header';
 import Skills from './component/content/Skills';
 import Portfolio from './component/content/Portfolio';
 import Contact from './component/content/Contact';
+import Dashboard from './component/dashboard/Dashboard';
+import ContactAdmin from './component/dashboard/ContactAdmin';
+import AddPortfolio from './component/dashboard/AddPortfolio';
+import AboutAdmin from './component/dashboard/AboutAdmin';
+import PortfoliosAdmin from './component/dashboard/PortfoliosAdmin';
+import SkillsAdmin from './component/dashboard/SkillsAdmin';
+import NewSkill from './component/dashboard/NewSkill';
 
 function App() {
   return (
-    
+
     <Router>
-      <Header/>
       <div>
-        <ul>
+
+        {/* <ul>        
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -31,28 +38,66 @@ function App() {
             <Link to="/skills">Skills</Link>
           </li>
           <li>
-            <Link to="/portfolio">Skills</Link>
+            <Link to="/portfolio">Portfolio</Link>
           </li>
           <li>
-            <Link to="/contact">Skills</Link>
-          </li>
-          
-        </ul>
+            <Link to="/contact">Contact</Link>
+          </li>          
+        </ul> */}
 
         <Switch>
+          {/* <Route path="/">
+            <Header />
+          </Route> */}
           <Route path="/about">
-            <About/>
-          </Route>          
+            <Header />
+            <About />
+          </Route>
           <Route path="/skills">
-            <Skills/>
+            <Header />
+            <Skills />
           </Route>
           <Route path="/portfolio">
-            <Portfolio/>
+            <Header />
+            <Portfolio />
           </Route>
           <Route path="/contact">
-            <Contact/>
+            <Header />
+            <Contact />
           </Route>
+          
         </Switch>
+
+        <Switch>          
+          <Route path="/admin/about">
+            <Dashboard />
+            <AboutAdmin />
+          </Route>
+          <Route path="/admin/skills">
+            <Dashboard />
+            <SkillsAdmin />
+          </Route>
+          <Route path="/admin/portfolios">
+            <Dashboard />
+            <PortfoliosAdmin />
+          </Route>
+          <Route path="/admin/addportfolio">
+            <Dashboard />
+            <AddPortfolio/>
+          </Route>
+          <Route path="/admin/contact">
+            <Dashboard />
+            <ContactAdmin />
+          </Route>
+          <Route path="/admin">
+            <Dashboard />
+          </Route>
+          <Route path="/admin/addskill">
+            <Dashboard />
+            <NewSkill />
+          </Route>
+        </Switch>       
+
       </div>
     </Router>
   );
