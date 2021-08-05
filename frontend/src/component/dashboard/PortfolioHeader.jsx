@@ -9,6 +9,9 @@ export default function PortfolioHeader() {
                 <th>image</th>
                 <th>github</th>
                 <th>link</th>
+                <th>date</th>
+                <th>edit</th>
+                <th>remove</th>
             </tr>
         </thead>
     )
