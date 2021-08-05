@@ -1,40 +1,14 @@
-import React, { useState } from 'react'
-import moment from 'moment'
-import { post } from '../../services/HttpClient';
-import { useHistory } from "react-router-dom";
-export default function PortfolioBody({portfolio , handleCallback}) {
+import React from 'react'
 
-    //const [state, setstate] = useState(initialState)
-    const history = useHistory();
-    const imageSize = {        
-        width: "60px",
-        width: "60px",        
-      };
-
-    const pointer = {
-        cursor: "pointer"
-    }  
-
-    const handleRemove = () =>{
-        //post(`deleteportfolio/${portfolio.id}`).then(res => console.log(res))
-        //portfolios.filter((item) => item.id !== portfolio.id);
-        handleCallback(portfolio)
-        
-        //history.push("/admin");        
-    }  
-
-    const data = moment(portfolio.created_at).format('MMMM Do YYYY');
+export default function PortfolioBody() {
     return (
         <tbody>
             <tr>
-                <td>{portfolio.name}</td>
-                <td>{portfolio.description}</td>
-                <td><img src={portfolio.image} style={imageSize}/></td>
-                <td>{portfolio.github}</td>
-                <td>{portfolio.link}</td>
-                <td>{data}</td>
-                <td><span class="badge badge-success">Edit</span></td>
-                <td style={pointer}><span class="badge badge-danger" onClick={handleRemove}>Remove</span></td>
+                <td>Vishnu Serghei</td>
+                <td>2012/01/01</td>
+                <td>Member</td>
+                <td>Member</td>
+                <td><span className="badge badge-success">Active</span></td>
             </tr>
             
         </tbody>

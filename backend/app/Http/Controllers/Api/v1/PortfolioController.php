@@ -21,7 +21,7 @@ class PortfolioController extends Controller
         $validator = Validator::make($request->all() , [
             'name' => 'required',
             'description' => 'required',
-            'image' => 'required',
+            'image' => 'required|mimes:jpeg,png,bmp|max:10240',
             'github' => 'required',
             'link' => 'required',
         ]);

@@ -1,29 +1,23 @@
-import React, { useState } from 'react'
-import { GetPortfolios } from '../../services/AxiosData';
+import React from 'react'
 import { post } from '../../services/HttpClient';
 
 export default function AddPortfolio() {
 
-    const [file, setFile] = useState(null)
-
-    const handleImage = (e) =>{
-        const file = e.target.files[0];
-        setFile(file);
-    }
-
-    const handleSubmit =(event) =>{        
+    const handleSubmit = (event) =>{
         event.preventDefault();
-        //console.log(event.target.elements.formFile.value);
+        console.log(event.target.elements.formFile);
         const name = event.target.elements.name.value;
         const description = event.target.elements.description.value;
-        const image = file;
+        //const image = event.target.elements.image.value;
         const github = event.target.elements.github.value;
         const link = event.target.elements.link.value;        
-        
-        console.log(name,description,image,github,link);
-        const params = GetPortfolios( name , description , image , github , link)
-        //console.log(params);
-        post('addportfolio' , params).then(res => console.log(res))
+
+        post('addportfolio' , {
+            name,
+            description,
+            github,
+            link
+        }).then(res => console.log(res))
     }
 
     return (
@@ -47,7 +41,7 @@ export default function AddPortfolio() {
                 </div>
                 <div class="col-md-12">
                     <label for="formFile" class="form-label">Image</label>
-                    <input class="form-control" type="file" id="formFile" onChange={handleImage}/>
+                    <input class="form-control" type="file" id="formFile" />
                 </div>
 
                 <div className="col-12">
