@@ -9,6 +9,7 @@ export default function ContactForm() {
         const email = event.target.elements.email.value;
         const subject = event.target.elements.subject.value;
         const message = event.target.elements.message.value;
+        
         post('setcontact' , {
             name,
             email,
