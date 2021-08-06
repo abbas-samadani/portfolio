@@ -4,11 +4,9 @@ import { post } from '../../services/HttpClient';
 import { useHistory } from "react-router-dom";
 export default function PortfolioBody({portfolio , handleCallback}) {
 
-    //const [state, setstate] = useState(initialState)
-    const history = useHistory();
     const imageSize = {        
         width: "60px",
-        width: "60px",        
+        width: "60px",
       };
 
     const pointer = {
@@ -16,11 +14,7 @@ export default function PortfolioBody({portfolio , handleCallback}) {
     }  
 
     const handleRemove = () =>{
-        //post(`deleteportfolio/${portfolio.id}`).then(res => console.log(res))
-        //portfolios.filter((item) => item.id !== portfolio.id);
-        handleCallback(portfolio)
-        
-        //history.push("/admin");        
+        handleCallback(portfolio)              
     }  
 
     const data = moment(portfolio.created_at).format('MMMM Do YYYY');

@@ -1,15 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import SkillsHeader from './SkillsHeader'
 import SkillsBody from './SkillsBody'
 import { useHistory } from 'react-router';
+import { get, post } from '../../services/HttpClient';
 
 export default function SkillsAdmin() {
+    const [skills, setSkills] = useState([])
+
+    useEffect(() => {
+        get('getskills').then(res => setSkills(res));
+     }, [])
 
     const routerHistory = useHistory();
     const handleRoute = (e, url) => {
         e.preventDefault();
         routerHistory.push(url)
     }
+
+    const handleCallback = async (skill) =>{
+        await post(`deleteskill/${skill.id}`).then(res => console.log(res))              
+        setSkills(skills.filter((item) => item.id !== skill.id));
+    }
+    
+    const getSkills = skills.map((skill , index) => <SkillsBody skill={skill} handleCallback={handleCallback}/>)
     return (
         <div className="container mt-5">
             <button type="button " class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
@@ -23,7 +36,7 @@ export default function SkillsAdmin() {
                         <div className="card-body">
                             <table className="table table-responsive-sm table-bordered table-striped table-sm">
                                 <SkillsHeader />
-                                <SkillsBody />
+                                {getSkills}
                             </table>
                             <nav>
                                 <ul className="pagination">

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom';
 import { GetPortfolios } from '../../services/AxiosData';
 import { post } from '../../services/HttpClient';
 
@@ -6,6 +7,7 @@ export default function AddPortfolio() {
 
     const [file, setFile] = useState(null)
 
+    const history = useHistory();
     const handleImage = (e) =>{
         const file = e.target.files[0];
         setFile(file);
@@ -24,6 +26,7 @@ export default function AddPortfolio() {
         const params = GetPortfolios( name , description , image , github , link)
         //console.log(params);
         post('addportfolio' , params).then(res => console.log(res))
+        history.push('/admin/portfolios');
     }
 
     return (
