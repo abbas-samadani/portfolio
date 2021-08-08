@@ -7,6 +7,8 @@ export default function About() {
     useEffect(() => {
         get('getabout').then(res => setAbout(res[0]));
       }, [])
+
+      console.log(about);
     
     return (
         <div>

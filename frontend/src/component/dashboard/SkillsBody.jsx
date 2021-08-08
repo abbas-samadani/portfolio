@@ -14,8 +14,7 @@ export default function SkillsBody({skill,handleCallback}) {
                 <td>Php</td>
                 <td>90</td>
                 <td><span class="badge badge-success">Edit</span></td>
-                <td style={pointer}><span class="badge badge-danger" onClick={handleRemove}>Remove</span></td>
-                
+                <td style={pointer}><span class="badge badge-danger" onClick={handleRemove}>Remove</span></td>                
             </tr>
 
         </tbody>

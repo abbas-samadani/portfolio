@@ -92,7 +92,7 @@ function App() {
           <Route path="/admin">
             <Dashboard />
           </Route>
-          <Route path="/admin/addskill">
+          <Route path="/admin/adskill">
             <Dashboard />
             <NewSkill />
           </Route>
