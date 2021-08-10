@@ -49,10 +49,7 @@ function App() {
           {/* <Route path="/">
             <Header />
           </Route> */}
-          <Route path="/about">
-            <Header />
-            <About />
-          </Route>
+          
           <Route path="/skills">
             <Header />
             <Skills />
@@ -65,11 +62,15 @@ function App() {
             <Header />
             <Contact />
           </Route>
+          <Route exact path="/">
+            <Header />
+            <About />
+          </Route>
           
         </Switch>
 
         <Switch>          
-          <Route path="/admin/about">
+          <Route exact path="/admin/about">
             <Dashboard />
             <AboutAdmin />
           </Route>
@@ -89,13 +90,14 @@ function App() {
             <Dashboard />
             <ContactAdmin />
           </Route>
-          <Route path="/admin">
-            <Dashboard />
-          </Route>
-          <Route path="/admin/adskill">
+          <Route path="/admin/addskill">
             <Dashboard />
             <NewSkill />
           </Route>
+          <Route path="/admin">
+            <Dashboard />
+          </Route>
+          
         </Switch>       
 
       </div>

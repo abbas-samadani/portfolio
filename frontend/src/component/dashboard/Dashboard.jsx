@@ -1,24 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+
 import { useHistory } from 'react-router';
+import { get } from '../../services/HttpClient';
 
 
 export default function Dashboard() {
+
+    const [info, setInfo] = useState([]);
+
     const routerHistory = useHistory();
+    
     const handleRoute = (e, url) => {
         e.preventDefault();
         routerHistory.push(url)
     }
+
+    useEffect(() => {
+        get('getabout').then(res => setInfo(res[0]));
+      }, [])
         return (
             <header id="header">
                 <div className="d-flex flex-column">
                     <div className="profile">
-                        <img src="styles/assets/img/profile-img.jpg" alt="" className="img-fluid rounded-circle" />
+                        <img src={info.image} alt="" className="img-fluid rounded-circle" />
                         <h1 className="text-light"><a href="">Admin Panel</a></h1>
                         
                     </div>
                     <nav className="nav-menu">
                         <ul>
-                            <li className="active"><a href="" onClick={e => { handleRoute(e, '/') }}><i className="bx bx-home" /> <span>Home</span></a></li>
+                            {/* <li className="active"><a href="" onClick={e => { handleRoute(e, '/') }}><i className="bx bx-home" /> <span>Home</span></a></li> */}
                             <li><a href="" onClick={e => { handleRoute(e, '/admin/about') }}><i className="bx bx-user" /> <span>About</span></a></li>
                             <li><a href="" onClick={e => { handleRoute(e, '/admin/skills') }}><i className="bx bx-file-blank" /> <span>Skills</span></a></li>
                             <li><a href="" onClick={e => { handleRoute(e, '/admin/portfolios') }}><i className="bx bx-book-content" /> Portfolios</a></li>

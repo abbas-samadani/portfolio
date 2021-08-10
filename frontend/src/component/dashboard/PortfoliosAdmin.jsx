@@ -10,6 +10,8 @@ export default function PortfoliosAdmin() {
        get('getportfolios').then(res => setPortfolios(res));
     }, [])
 
+    
+
     const handleCallback = async (portfolio) =>{
         await post(`deleteportfolio/${portfolio.id}`).then(res => console.log(res))              
         setPortfolios(portfolios.filter((item) => item.id !== portfolio.id));

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function SkillsBody({skill,handleCallback}) {
+export default function SkillsBody({skill,progress,handleCallback}) {
     const pointer = {
         cursor: "pointer"
     } 
@@ -11,8 +11,8 @@ export default function SkillsBody({skill,handleCallback}) {
     return (
         <tbody>
             <tr>
-                <td>Php</td>
-                <td>90</td>
+                <td>{skill.name}</td>
+                <td>{skill.progress}</td>
                 <td><span class="badge badge-success">Edit</span></td>
                 <td style={pointer}><span class="badge badge-danger" onClick={handleRemove}>Remove</span></td>                
             </tr>

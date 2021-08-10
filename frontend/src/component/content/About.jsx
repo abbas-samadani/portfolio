@@ -8,8 +8,10 @@ export default function About() {
         get('getabout').then(res => setAbout(res[0]));
       }, [])
 
-      console.log(about);
-    
+    const imageStyle = {
+        width : '300px',
+        height : '350px'
+    }  
     return (
         <div>
             <section id="about" className="about">
@@ -20,7 +22,7 @@ export default function About() {
                     </div>
                     <div className="row">
                         <div className="col-lg-4 aos-init aos-animate" data-aos="fade-right">
-                            <img src="styles/assets/img/profile-img.jpg" className="img-fluid" alt="" />
+                            <img src={about.image} className="img-fluid" style={imageStyle} alt="" />
                         </div>
                         <div className="col-lg-8 pt-4 pt-lg-0 content aos-init aos-animate" data-aos="fade-left">
                             <h3>{about.title}</h3>
